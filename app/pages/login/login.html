@@ -1,0 +1,22 @@
+<ActionBar title="Recipe Plus" class="action-bar">
+</ActionBar>
+
+<GridLayout rows="*,auto,*" id="main">
+    <StackLayout row="1" orientation="vertical" class="buttons">
+        <Button class="loginBtn" text="Log in" [nsRouterLink]="['/mainmenu']"></Button>
+
+        <Button class="facebookBtn">
+            <FormattedString>
+                <Span text="{{ '0xea90' | icon}}" class="icon"></Span>
+                <Span text=" Log in with Facebook"></Span>
+            </FormattedString>
+        </Button>
+
+        <Button class="googleBtn">
+            <FormattedString>
+                <Span text="{{ '0xea88' | icon}}" class="icon"></Span>
+                <Span text="  Log in with Google"></Span>
+            </FormattedString>
+        </Button>
+    </StackLayout>
+</GridLayout>

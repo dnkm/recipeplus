@@ -1,0 +1,17 @@
+<ActionBar title="Discover">
+    <ActionItem 
+        android.systemIcon="{{ viewModeLinear ? 'ic_listview_layouts_wrap' : 'ic_list_view' }}"
+        android.position="right"></ActionItem>
+</ActionBar>
+
+<RadListView id="list-view" [items]="recipes">
+    <ng-template tkListItemTemplate let-item="item">
+        <GridLayout rows="*, auto">
+            <Image src="{{item.photoUrl}}" stretch="aspectFill" loadMode="async"></Image>
+            <StackLayout row="1" class="recipeContainer">
+                <Label text="{{item.name}}" class="recipeTitle"></Label>
+                <Label text="{{item.author}}" class="recipeAuthor"></Label>
+            </StackLayout>
+        </GridLayout>
+    </ng-template>
+</RadListView>

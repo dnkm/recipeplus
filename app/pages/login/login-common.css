@@ -1,0 +1,26 @@
+#main {
+    background-image: url('res://mainbg');
+}
+
+.buttons {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    min-width: 50%;
+}
+
+.loginBtn {
+    color: white;
+    background-color: #BD081C;
+}
+
+.facebookBtn {
+    color: white;
+    background-color: #4267B2;
+}
+
+.googleBtn {
+    color: white;
+    background-color: #4285F4;
+}
+
