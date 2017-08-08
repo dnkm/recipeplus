@@ -1,19 +1,20 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NativeScriptHttpModule } from 'nativescript-angular/http';
+
 import { NativeScriptUIListViewModule } from 'nativescript-telerik-ui/listview/angular';
+
 import { AppRoutingModule, navigatableComponents } from "./app.routing";
 import { AppComponent } from "./app.component";
 
-import { ItemService } from "./item/item.service";
-
 import { IconPipe } from "./pipes/iconPipe";
+
+
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
-
-// Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
-// import { NativeScriptHttpModule } from "nativescript-angular/http";
 
 @NgModule({
     bootstrap: [
@@ -23,7 +24,8 @@ import { IconPipe } from "./pipes/iconPipe";
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptUIListViewModule,
-        NativeScriptRouterModule
+        NativeScriptRouterModule,
+        NativeScriptHttpModule
     ],
     declarations: [
         AppComponent,
@@ -31,7 +33,7 @@ import { IconPipe } from "./pipes/iconPipe";
         ...navigatableComponents
     ],
     providers: [
-        ItemService
+        
     ],
     schemas: [
         NO_ERRORS_SCHEMA
