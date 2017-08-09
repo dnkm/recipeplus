@@ -1,55 +1,47 @@
-import { Recipe } from '../recipe'
+import { Recipe, Ingredient } from '../recipe'
 
 export class AllRecipesParser {
-    parse(src: string): object {
-        let photos = [];
-        let title: string;
-
-        let matched = src.match(/class="rec-photo".*src="([^"]*)".*title="([^"]*)"/i);
-        if (matched) {
-            matched.forEach((val, i) => {
-                if (i == 1) {
-                    photos.push(val);
-                }
-                else if (i == 2) {
-                    title = val;
-                }
-            })
-        }
-
-        console.log("fetched title : " + title);
-
-        return new Recipe(title, null, null, null, null);
+    parse(src: string): Recipe {
+        let title: string = this.findTitle(src);
+        let photos: string[] = this.findPhotos(src);
+        let ingredients: Ingredient[] = this.findIngreidents(src);
+        return new Recipe(title, null, ingredients, null, photos);
     }
-}
 
-/*
+    findTitle(src): string {
+        let match = src.match(/<title>(.*)<\/title>/i);
+        return (match) ? match[1] : '';
+    }
 
-        // main photo and title
-        let matched = src.match(/class="rec-photo".*src="([^"]*)".*title="([^"]*)"/i);
-        if (matched) {
-            matched.forEach((val, i) => {
-                if (i == 1) {
-                    this.photos.push(val);
-                }
-                else if (i == 2) {
-                    this.title = val;
-                }
-            })
-        }
+    findPhotos(src: string): string[] {
+        return src.match(/['"]http[^'"]*userphotos[^'"]*[jpg|gif|png]/gi);
+    }
 
+    findIngreidents(src: string): Ingredient[] {
+        let result: Ingredient[] = [];
 
-        // ingredients
         let regex = /itemprop="ingredients">([^<]*)</gi;
-        let ar;
-        while ((ar = regex.exec(src)) !== null) {
-            this.ingredients.push(ar[1]);
+        let match;
+
+        while (match = regex.exec(src)) {
+            result.push(new Ingredient(match[1]));
         }
 
-        // directions
-        regex = /recipe-directions__list--item">([^<]*)</gi;
-        while ((ar = regex.exec(src)) !== null) {
-            this.directions.push(ar[1]);
+        return result;
+    }
+
+    findDirections(src: string): String[] {
+        let result: String[] = [];
+
+        let regex = /class="recipe-directions__list--item">([^<]*)</gi;
+        let match;
+
+        while (match = regex.exec(src)) {
+            result.push(match[1]);
         }
 
-*/
+        return result;
+    }
+
+
+}

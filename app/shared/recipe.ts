@@ -5,16 +5,27 @@ export class Recipe {
     rating: number;
 
     constructor(
-        public title: string, 
+        public title: string,
         public url: string,
-        public ingredients: Ingredients[],
+        public ingredients: Ingredient[],
         public directions: string[],
-        public photoUrl: string) {
+        public photos: string[]) {
         this.id = ++counter;
         this.rating = Math.floor(Math.random() * 6);
     }
 }
 
-export class Ingredients {
-    constructor(public amount: Number, public unit: string, public name: string) {}
+const units = [
+    'cup', 'tablespoon'
+]
+
+export class Ingredient {
+    public amount: Number; 
+    public unit: string; 
+    public name: string
+
+    constructor(txt: string) {
+        // TODO - take out amoun
+        this.name = txt;
+    }
 }

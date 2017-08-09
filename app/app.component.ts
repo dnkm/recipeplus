@@ -10,14 +10,11 @@ import * as app from "tns-core-modules/application";
 export class AppComponent {
     constructor(private parser: Parser) {
         app.on(app.launchEvent, function (args: app.ApplicationEventData) {
-            console.log("v5-------------------------------------");
+            console.log("v7-------------------------------------");
 
             let intent = args.android;
             if (intent) {
-                //let sub = intent.getStringExtra(android.content.Intent.EXTRA_SUBJECT);
                 let txt = intent.getStringExtra(android.content.Intent.EXTRA_TEXT);
-                console.log(txt);
-
                 parser.parse(txt).subscribe(obj => console.dir(obj));
             }
 
