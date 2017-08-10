@@ -11,6 +11,8 @@ import { AppComponent } from "./app.component";
 
 import { IconPipe } from "./pipes/iconPipe";
 
+import { RecipeDB } from "./shared/dao/recipeDB";
+
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -33,7 +35,7 @@ import { IconPipe } from "./pipes/iconPipe";
         ...navigatableComponents
     ],
     providers: [
-        
+        RecipeDB
     ],
     schemas: [
         NO_ERRORS_SCHEMA

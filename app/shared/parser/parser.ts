@@ -24,8 +24,6 @@ export class Parser {
                     recipe.url = url;
                     return recipe;
                 })
-
-            //.map(data => new AllRecipesParser().parse(data));
         } else {
             return null;
         }

@@ -1,0 +1,13 @@
+<ActionBar title="Isabella's Cookbook">
+</ActionBar>
+
+<RadListView id="list-view" [items]="myRecipes">
+    <ng-template tkListItemTemplate let-item="item">
+        <GridLayout rows="*, auto">
+            <Image src="{{item.photos[0]}}" stretch="aspectFill" loadMode="async"></Image>
+            <StackLayout row="1" class="recipeContainer">
+                <Label text="{{item.title}}" class="recipeTitle"></Label>
+            </StackLayout>
+        </GridLayout>
+    </ng-template>
+</RadListView>

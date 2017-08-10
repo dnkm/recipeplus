@@ -14,7 +14,7 @@ export class AllRecipesParser {
     }
 
     findPhotos(src: string): string[] {
-        return src.match(/['"]http[^'"]*userphotos[^'"]*[jpg|gif|png]/gi);
+        return src.match(/http[^'"]*userphotos[^'"]*[jpg|gif|png]/gi);
     }
 
     findIngreidents(src: string): Ingredient[] {

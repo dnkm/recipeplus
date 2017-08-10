@@ -5,12 +5,14 @@ import { Routes } from "@angular/router";
 import { LoginComponent } from "./pages/login/login.component";
 import { MainmenuComponent } from "./pages/mainmenu/mainmenu.component";
 import { DiscoverComponent } from "./pages/discover/discover.component";
+import { CookbookComponent } from "./pages/cookbook/cookbook.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "mainmenu", component: MainmenuComponent },
-    { path: "discover", component: DiscoverComponent }
+    { path: "discover", component: DiscoverComponent },
+    { path: "cookbook", component: CookbookComponent }
 ];
 
 @NgModule({
@@ -20,5 +22,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const navigatableComponents = [
-    LoginComponent, MainmenuComponent, DiscoverComponent
+    LoginComponent, MainmenuComponent, DiscoverComponent, CookbookComponent
 ]
