@@ -6,10 +6,14 @@ export class Recipe {
 
     constructor(
         public title: string,
+        public website: string,
         public url: string,
         public ingredients: Ingredient[],
         public directions: string[],
-        public photos: string[]) {
+        public photos: string[],
+        public timeInMinutes: number,   // minutes
+        public servings: number
+    ) {
         this.id = ++counter;
         this.rating = Math.floor(Math.random() * 6);
     }
@@ -20,8 +24,8 @@ const units = [
 ]
 
 export class Ingredient {
-    public amount: Number; 
-    public unit: string; 
+    public amount: Number;
+    public unit: string;
     public name: string
 
     constructor(txt: string) {

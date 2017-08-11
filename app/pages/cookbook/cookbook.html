@@ -2,9 +2,9 @@
 </ActionBar>
 
 <RadListView id="list-view" [items]="myRecipes">
-    <ng-template tkListItemTemplate let-item="item">
+    <ng-template tkListItemTemplate let-item="item" let-i="index">
         <GridLayout rows="*, auto">
-            <Image src="{{item.photos[0]}}" stretch="aspectFill" loadMode="async"></Image>
+            <Image src="{{item.photos[0]}}" stretch="aspectFill" loadMode="async" [nsRouterLink]="['/']"></Image>
             <StackLayout row="1" class="recipeContainer">
                 <Label text="{{item.title}}" class="recipeTitle"></Label>
             </StackLayout>
