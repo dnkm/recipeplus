@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "tns-core-modules/application";
 
 import { Parser } from './shared/parser/parser';
-import { RecipeDB } from './shared/dao/recipeDB';
+import { RecipeListService } from './shared/recipe-list.service';
 import { Recipe } from './shared/recipe';
 
 
@@ -12,7 +12,7 @@ import { Recipe } from './shared/recipe';
     providers: [Parser]
 })
 export class AppComponent {
-    constructor(private parser: Parser, private recipeDB: RecipeDB) {
+    constructor(private parser: Parser, private recipeListService: RecipeListService) {
         app.on(app.launchEvent, (args: app.ApplicationEventData) => {
             console.log("v7-------------------------------------");
 
@@ -22,7 +22,7 @@ export class AppComponent {
                 parser.parse(txt).subscribe(recipe => {
                     if (recipe) {
                         console.log("adding");
-                        this.recipeDB.addToMyRecipes(recipe);
+                        this.recipeListService.addToMyRecipes(recipe);
                     } else {
                         console.log("not a valid recipe");
                     }

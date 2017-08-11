@@ -2,7 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { Page } from "ui/page";
 
 import { Recipe } from "../../shared/recipe";
-import { RecipeDB } from "../../shared/dao/recipeDB";
+import { RecipeListService } from "../../shared/recipe-list.service";
 
 @Component({
     moduleId: module.id,
@@ -11,12 +11,12 @@ import { RecipeDB } from "../../shared/dao/recipeDB";
     templateUrl: "cookbook.html"
 })
 export class CookbookComponent implements OnInit {
-    constructor(private page: Page, private recipeDB: RecipeDB) { 
+    constructor(private page: Page, private recipeListService: RecipeListService) { 
     }
 
     myRecipes: Recipe[];
 
     ngOnInit() {
-        this.recipeDB.getMyRecipes().then(recipes => this.myRecipes = recipes);
+        this.recipeListService.getMyRecipes().then(recipes => this.myRecipes = recipes);
     }
 }

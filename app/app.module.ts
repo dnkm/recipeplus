@@ -11,7 +11,7 @@ import { AppComponent } from "./app.component";
 
 import { IconPipe } from "./pipes/iconPipe";
 
-import { RecipeDB } from "./shared/dao/recipeDB";
+import { RecipeListService } from "./shared/recipe-list.service";
 
 
 
@@ -35,7 +35,7 @@ import { RecipeDB } from "./shared/dao/recipeDB";
         ...navigatableComponents
     ],
     providers: [
-        RecipeDB
+        RecipeListService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

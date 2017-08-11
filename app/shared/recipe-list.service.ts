@@ -1,20 +1,56 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Recipe } from './recipe';
+import { Injectable } from "@angular/core";
 
-const recipeStorage = [];
+import { knownFolders, File, Folder } from "file-system";
+import { Recipe } from "./recipe";
+
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class RecipeListService {
-    // discover
+    private folder: Folder;
+    private dbFile: File;
 
-    load(page: number = 1): Observable<Recipe[]> {
-        let fake: Recipe[] = [
-            
-        ]
+    constructor() {
+        let documents = knownFolders.documents();
+        this.folder = documents.getFolder("myrecipes");
+        this.dbFile = this.folder.getFile("db.txt")
+    }
 
-        return Observable.create(o => {
-            o.next(fake);
-        })
+    getMyRecipes(): Promise<Recipe[]> {
+        return new Promise((res, rej) => {
+            this.dbFile.readText()
+                .then(txt => {
+                    if (!txt) {
+                        return res([]);
+                    }
+                    let arr: Object[] = JSON.parse(txt);
+                    if (!arr || !(arr instanceof Array)) {
+                        return res([]);
+                    }
+                    res(arr.map(obj => obj as Recipe));
+                })
+                .catch(err => {
+                    console.error("Cannot open file");
+                    rej(new Error("Cannot open file"));
+                });
+        });
+    }
+
+    setMyRecipes(recipes: Recipe[]) {
+        this.dbFile.writeText(JSON.stringify(recipes));
+    }
+
+    addToMyRecipes(newRecipe: Recipe): Promise<boolean> {
+        return new Promise((res, rej) => {
+            this.getMyRecipes().then(recipes => {
+                if (recipes.findIndex(r => r.url === newRecipe.url) >= 0) {
+                    console.log("returning false");
+                    return res(false);
+                }
+                this.setMyRecipes([...recipes, newRecipe]);
+                console.log("returning true");
+                return res(true);
+            })
+        });
     }
 }

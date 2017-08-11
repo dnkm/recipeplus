@@ -25,8 +25,8 @@ export class DiscoverComponent implements OnInit {
     }
 
     loadMoreRecipes() {
-        this.recipeService.load(this.pageNum++).subscribe(loadedList => {
-            this.recipes = this.recipes.concat(loadedList);
-        });
+        // this.recipeService.load(this.pageNum++).subscribe(loadedList => {
+        //     this.recipes = this.recipes.concat(loadedList);
+        // });
     }
 }
