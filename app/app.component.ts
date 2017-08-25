@@ -5,7 +5,6 @@ import { Parser } from './shared/parser/parser';
 import { RecipeListService } from './shared/recipe-list.service';
 import { Recipe } from './shared/recipe';
 
-
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html",
@@ -14,22 +13,22 @@ import { Recipe } from './shared/recipe';
 export class AppComponent {
     constructor(private parser: Parser, private recipeListService: RecipeListService) {
         app.on(app.launchEvent, (args: app.ApplicationEventData) => {
-            console.log("v7-------------------------------------");
-
             let intent = args.android;
             if (intent) {
                 let txt = intent.getStringExtra(android.content.Intent.EXTRA_TEXT);
-                parser.parse(txt).subscribe(recipe => {
-                    if (recipe) {
-                        console.log("adding");
-                        this.recipeListService.addToMyRecipes(recipe);
-                    } else {
-                        console.log("not a valid recipe");
-                    }
-                });
+                let parseObs = parser.parse(txt);
+                if (parseObs) {
+                    parseObs.subscribe(recipe => {
+                        if (recipe) {
+                            console.log("adding recipe to the DB");
+                            console.dir(recipe);
+                            this.recipeListService.addToMyRecipes(recipe);
+                        } else {
+                            console.log("not a valid recipe");
+                        }
+                    });
+                }
             }
-
-            console.log("-------------------------------------");
         })
     }
 }

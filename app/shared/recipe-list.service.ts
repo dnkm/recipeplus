@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class RecipeListService {
     private folder: Folder;
     private dbFile: File;
+    private recipes: Recipe[] = [];
 
     constructor() {
         let documents = knownFolders.documents();
@@ -17,6 +18,12 @@ export class RecipeListService {
     }
 
     getMyRecipes(): Promise<Recipe[]> {
+        if (this.recipes.length > 0) {
+            return new Promise((res, rej) => {
+                console.log("already fetched. currently there are " + this.recipes.length + " recipes in the DB");
+                res(this.recipes);
+            })
+        }
         return new Promise((res, rej) => {
             this.dbFile.readText()
                 .then(txt => {
@@ -27,7 +34,8 @@ export class RecipeListService {
                     if (!arr || !(arr instanceof Array)) {
                         return res([]);
                     }
-                    res(arr.map(obj => obj as Recipe));
+                    this.recipes = arr.map(obj => obj as Recipe);
+                    res(this.recipes);
                 })
                 .catch(err => {
                     console.error("Cannot open file");

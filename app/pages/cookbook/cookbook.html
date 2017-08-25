@@ -1,13 +1,20 @@
+<!--
 <ActionBar title="Isabella's Cookbook">
 </ActionBar>
+-->
 
-<RadListView id="list-view" [items]="myRecipes">
-    <ng-template tkListItemTemplate let-item="item" let-i="index">
-        <GridLayout rows="*, auto">
-            <Image src="{{item.photos[0]}}" stretch="aspectFill" loadMode="async" [nsRouterLink]="['/']"></Image>
-            <StackLayout row="1" class="recipeContainer">
-                <Label text="{{item.title}}" class="recipeTitle"></Label>
-            </StackLayout>
-        </GridLayout>
-    </ng-template>
-</RadListView>
+<StackLayout orientation="vertical" class="body">
+    <Label text="Isabella's Cookbook" textWrap="true" class="header_label"></Label>
+    <ScrollView orientation="horizontal">
+        <!--<SegmentedBar [items]="allTags" class="tagBar"></SegmentedBar>-->
+        <StackLayout orientation="horizontal">
+            <Label [text]="item | uppercase" textWrap="true" *ngFor="let item of allTags; let i = index" class="tag-item" [class.selected]="i == selectedTag"></Label>
+        </StackLayout>
+    </ScrollView>
+
+    <ScrollView>
+        <FlexboxLayout class="flexContainer">
+            <CookbookGridbox [recipe]="recipe" [doSpan]="i % 3 == 2" *ngFor="let recipe of myRecipes; let i = index"></CookbookGridbox>
+        </FlexboxLayout>
+    </ScrollView>
+</StackLayout>

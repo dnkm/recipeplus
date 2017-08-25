@@ -1,6 +1,7 @@
 let counter = 0;
 
 export class Recipe {
+    static allTags = ['all','seafood','bbq','one pot','chicken'];
     id: number;
     rating: number;
 
@@ -12,7 +13,8 @@ export class Recipe {
         public directions: string[],
         public photos: string[],
         public timeInMinutes: number,   // minutes
-        public servings: number
+        public servings: number,
+        public tags: string[]
     ) {
         this.id = ++counter;
         this.rating = Math.floor(Math.random() * 6);

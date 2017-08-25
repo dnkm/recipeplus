@@ -14,3 +14,25 @@ refer to http://docs.nativescript.org/ui/theme.
 .icon {
     font-family: 'icomoon';
 }
+
+.body {
+    padding: 10
+}
+
+ActionBar {
+    background-color: white;
+    color: black;
+}
+
+.header_label {
+    font-size: 28;
+    background: white;
+    color: black;
+    font-family: 'WorkSans-Bold';
+    font-weight: bold;
+    letter-spacing: 0;
+}
+
+.fullWidth {
+    width: 100%;
+}

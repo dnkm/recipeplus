@@ -2,8 +2,9 @@ import { Http, Headers, Response } from "@angular/http";
 import { Injectable } from '@angular/core';
 
 import { Observable as RxObservable } from "rxjs/Observable";
-import { AllRecipesParser } from './allrecipes';
+import 'rxjs/add/operator/map';
 
+import { AllRecipesParser } from './allrecipes';
 import { Recipe } from '../recipe';
 
 @Injectable()
@@ -16,6 +17,7 @@ export class Parser {
         }
 
         url = url.toLowerCase();
+        console.log("url : " + url);
 
         if (url.indexOf('allrecipes') >= 0) {
             return this.http.get(url)

@@ -1,5 +1,6 @@
 import { OnInit, Component } from '@angular/core';
 import { Page } from "ui/page";
+import { SegmentedBarItem } from 'ui/segmented-bar';
 
 import { Recipe } from "../../shared/recipe";
 import { RecipeListService } from "../../shared/recipe-list.service";
@@ -11,12 +12,29 @@ import { RecipeListService } from "../../shared/recipe-list.service";
     templateUrl: "cookbook.html"
 })
 export class CookbookComponent implements OnInit {
-    constructor(private page: Page, private recipeListService: RecipeListService) { 
+    constructor(private page: Page, private recipeListService: RecipeListService) {
     }
 
-    myRecipes: Recipe[];
+    myRecipes: Recipe[] = [];
+    allTags: String[] = [];
+    selectedTag: number = 0;
 
     ngOnInit() {
-        this.recipeListService.getMyRecipes().then(recipes => this.myRecipes = recipes);
+        this.page.actionBarHidden = true;
+        this.allTags = Recipe.allTags;
+        this.myRecipes = [];
+        this.recipeListService.getMyRecipes().then(recipes => {
+            /*
+            for (let i = 0; i < recipes.length; i++) {
+                let ar = []
+                ar.push(recipes[i]);
+                if (i % 3 == 0 && i < recipes.length - 1) {
+                    ar.push(recipes[i + 1]);
+                    i++;
+                }
+                this.myRecipes.push(ar);
+            }*/
+            this.myRecipes = recipes;
+        });
     }
 }

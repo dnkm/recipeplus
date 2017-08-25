@@ -1,0 +1,20 @@
+.tag-item {
+    font-size: 16;
+    margin: 10;
+    color: #808080;
+    font-family: 'WorkSans-Bold';
+}
+
+.tag-item.selected {
+    border-bottom-color: red;
+    border-bottom-width: 3;
+    padding-bottom: 1;
+    font-weight: bold;
+    color: black;
+}
+
+.flexContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

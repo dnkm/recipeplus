@@ -3,12 +3,12 @@ import { Recipe, Ingredient } from '../recipe'
 export class AllRecipesParser {
     parse(src: string): Recipe {
         let title: string = this.findTitle(src);
-        let website: string = '';
+        let website: string = 'All Recipes';
         let photos: string[] = this.findPhotos(src);
         let ingredients: Ingredient[] = this.findIngreidents(src);
         let timeInMinutes: number = 0;
         let servings: number = 0;
-        return new Recipe(title, website, null, ingredients, null, photos, timeInMinutes, servings);
+        return new Recipe(title, website, null, ingredients, null, photos, timeInMinutes, servings, []);
     }
 
     findTitle(src): string {

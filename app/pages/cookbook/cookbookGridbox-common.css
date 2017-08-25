@@ -1,0 +1,30 @@
+.recipeContainer {
+    width: 50%;
+    padding: 5;
+}
+
+.recipeContainer.stretch {
+    width: 100%;
+}
+
+.recipeContainer > Image {
+    border-radius: 10;
+}
+
+.recipeLabels {
+    margin: 10;
+    color: white;
+}
+
+.recipeLabels .shadow {
+    color: #222222;
+    opacity: 0.8;
+}
+
+.recipeLabels .recipeTitle {
+    font-size: 10;
+    font-weight: bold;
+}
+.recipeLabels .recipeWebsite {
+    font-size: 9;
+}

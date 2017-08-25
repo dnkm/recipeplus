@@ -6,6 +6,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { MainmenuComponent } from "./pages/mainmenu/mainmenu.component";
 import { DiscoverComponent } from "./pages/discover/discover.component";
 import { CookbookComponent } from "./pages/cookbook/cookbook.component";
+import { CookbookGridboxComponent } from "./pages/cookbook/cookbookGridbox.component";
 import { RecipeComponent } from "./pages/recipe/recipe.component";
 
 const routes: Routes = [
@@ -15,7 +16,6 @@ const routes: Routes = [
     { path: "discover", component: DiscoverComponent },
     { path: "cookbook", component: CookbookComponent },
     { path: "recipe/:id", component: RecipeComponent }
-    
 ];
 
 @NgModule({
@@ -25,5 +25,6 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const navigatableComponents = [
-    LoginComponent, MainmenuComponent, DiscoverComponent, CookbookComponent, RecipeComponent
+    LoginComponent, MainmenuComponent, DiscoverComponent, CookbookComponent, RecipeComponent,
+    CookbookGridboxComponent
 ]
