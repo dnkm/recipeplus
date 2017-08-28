@@ -8,7 +8,7 @@
     <ScrollView orientation="horizontal">
         <!--<SegmentedBar [items]="allTags" class="tagBar"></SegmentedBar>-->
         <StackLayout orientation="horizontal">
-            <Label [text]="item | uppercase" textWrap="true" *ngFor="let item of allTags; let i = index" class="tag-item" [class.selected]="i == selectedTag"></Label>
+            <Label [text]="item | uppercase" textWrap="true" *ngFor="let item of allTags; let i = index" class="tag-item" [class.selected]="i == selectedTag" (tap)="selectTag(i)"></Label>
         </StackLayout>
     </ScrollView>
 

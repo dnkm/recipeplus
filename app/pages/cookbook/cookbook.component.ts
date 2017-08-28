@@ -37,4 +37,8 @@ export class CookbookComponent implements OnInit {
             this.myRecipes = recipes;
         });
     }
+
+    selectTag(i) {
+        this.selectedTag = i;
+    }
 }
