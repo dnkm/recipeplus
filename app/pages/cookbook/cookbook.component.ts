@@ -1,6 +1,7 @@
 import { OnInit, Component } from '@angular/core';
 import { Page } from "ui/page";
 import { SegmentedBarItem } from 'ui/segmented-bar';
+import * as platformModule from "tns-core-modules/platform";
 
 import { Recipe } from "../../shared/recipe";
 import { RecipeListService } from "../../shared/recipe-list.service";
@@ -13,11 +14,14 @@ import { RecipeListService } from "../../shared/recipe-list.service";
 })
 export class CookbookComponent implements OnInit {
     constructor(private page: Page, private recipeListService: RecipeListService) {
+        this.mainScreen = platformModule.screen.mainScreen;
+        
     }
 
     myRecipes: Recipe[] = [];
     allTags: String[] = [];
     selectedTag: number = 0;
+    mainScreen: platformModule.ScreenMetrics;
 
     ngOnInit() {
         this.page.actionBarHidden = true;

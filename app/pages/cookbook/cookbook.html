@@ -4,13 +4,19 @@
 -->
 
 <StackLayout orientation="vertical" class="body">
+
     <Label text="Isabella's Cookbook" textWrap="true" class="header_label"></Label>
-    <ScrollView orientation="horizontal">
-        <!--<SegmentedBar [items]="allTags" class="tagBar"></SegmentedBar>-->
-        <StackLayout orientation="horizontal">
-            <Label [text]="item | uppercase" textWrap="true" *ngFor="let item of allTags; let i = index" class="tag-item" [class.selected]="i == selectedTag" (tap)="selectTag(i)"></Label>
-        </StackLayout>
-    </ScrollView>
+
+    <AbsoluteLayout width="100%" height="40">
+        <ScrollView orientation="horizontal" left="0" top="0" width="100%" height="100%">
+            <!--<SegmentedBar [items]="allTags" class="tagBar"></SegmentedBar>-->
+            <StackLayout orientation="horizontal">
+                <Label [text]="item | uppercase" textWrap="true" *ngFor="let item of allTags; let i = index" class="tag-item" [class.selected]="i == selectedTag"
+                    (tap)="selectTag(i)"></Label>
+            </StackLayout>
+        </ScrollView>
+        <Gradient top="0" [left]="mainScreen.widthPixels / mainScreen.scale * 0.8" width="20%" height="100%" direction="to right" colors="rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)"></Gradient>
+    </AbsoluteLayout>
 
     <ScrollView>
         <FlexboxLayout class="flexContainer">
