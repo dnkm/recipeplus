@@ -3,8 +3,7 @@
 </ActionBar>
 -->
 
-<StackLayout orientation="vertical" class="body">
-
+<StackLayout orientation="vertical" class="body" left="0" top="0">
     <Label text="Isabella's Cookbook" textWrap="true" class="header_label"></Label>
 
     <AbsoluteLayout width="100%" height="40">
@@ -15,12 +14,19 @@
                     (tap)="selectTag(i)"></Label>
             </StackLayout>
         </ScrollView>
-        <Gradient top="0" [left]="mainScreen.widthPixels / mainScreen.scale * 0.8" width="20%" height="100%" direction="to right" colors="rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)"></Gradient>
+        <Gradient top="0" [left]="mainScreen.widthPixels / mainScreen.scale * 0.8" width="20%" height="100%" direction="to right"
+            colors="rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)"></Gradient>
     </AbsoluteLayout>
 
     <ScrollView>
-        <FlexboxLayout class="flexContainer">
+        <FlexboxLayout class="flexContainer" left="0" top="0">
             <CookbookGridbox [recipe]="recipe" [doSpan]="i % 3 == 2" *ngFor="let recipe of myRecipes; let i = index"></CookbookGridbox>
         </FlexboxLayout>
     </ScrollView>
+
 </StackLayout>
+
+<AbsoluteLayout>
+    <Label text="{{ '0xe9ba' | icon}}" class="bottom icon" left="{{mainScreen.widthDIPs / 2 - 50}}" top="{{mainScreen.heightDIPs - 120}}"></Label>
+
+</AbsoluteLayout>
