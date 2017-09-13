@@ -1,1 +1,16 @@
-<Label *ngIf="recipe" text="recipe loaded {{recipe | json}}"></Label>
+<ScrollView>
+    <StackLayout *ngIf="recipe" orientation="vertical">
+        <!--<Label textWrap="true" [text]="recipe | json"></Label>-->
+        <Image src="{{recipe.photos[0]}}" stretch="aspectFit" loadMode="async"></Image>
+        <Label class="title" [text]="recipe.title"></Label>
+        <Label class="website" text="{{recipe.website ? recipe.website : 'Daniel Recipes'}}"></Label>
+        <Label class="h2" text="Ingredients"></Label>
+        <Label *ngFor="let ingr of recipe.ingredients" class="ingredients" [text]="ingr.name"></Label>
+        <Label class="h2" text="Directions"></Label>
+        <Label *ngFor="let dir of recipe.directions"class="directions" [text]="dir"></Label>
+        <Label class="h2" text="Notes"></Label>
+        <Label class="gray" text="Tap to add a personal note"></Label>
+        <Label class="h2" text="Tags"></Label>
+        <Label class="gray" text="#SEAFOOD, #SHRIMP"></Label>
+    </StackLayout>
+</ScrollView>

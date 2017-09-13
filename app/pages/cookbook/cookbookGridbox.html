@@ -1,5 +1,5 @@
 <GridLayout class="recipeContainer" [class.stretch]="doSpan">
-    <Image src="{{recipe.photos[0]}}" stretch="aspectFill" loadMode="async" [nsRouterLink]="['/']"></Image>
+    <Image src="{{recipe.photos[0]}}" stretch="aspectFill" loadMode="async" [nsRouterLink]="['/recipe/'+recipe.id]"></Image>
     <AbsoluteLayout verticalAlignment="bottom" class="recipeLabels">
         <StackLayout orientation="vertical" left="0" top="0.3" class="shadow">
             <Label text="{{recipe.title}}" textWrap="true" class="recipeTitle" width="150"></Label>

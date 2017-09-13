@@ -1,0 +1,17 @@
+Label {
+    padding: 5;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20;
+}
+
+.gray {
+    color: gray;
+}
+
+.h2 {
+    font-weight: bold;
+    font-size: 15;
+}
